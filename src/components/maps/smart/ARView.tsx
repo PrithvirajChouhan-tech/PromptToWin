@@ -1,0 +1,8 @@
+import React,{useEffect,useRef,useState} from 'react';
+import {demoARAdapter} from '../../../services/smartMap/travel';
+export function ARView({onClose,accuracy,direction,remaining}:{onClose:()=>void;accuracy?:number;direction?:string;remaining?:number}){
+ const video=useRef<HTMLVideoElement>(null);const [error,setError]=useState('');const close=useRef(onClose);close.current=onClose;
+ useEffect(()=>{let active=true,stream:MediaStream|undefined,timer:ReturnType<typeof setTimeout>|undefined;const fallback=(message:string)=>{setError(message);timer=setTimeout(()=>close.current(),2500);};if(!accuracy||accuracy>40){fallback('Location accuracy is too low. Returning to the map…');return()=>clearTimeout(timer);}demoARAdapter.start().then(s=>{if(!active){s.getTracks().forEach(t=>t.stop());return;}stream=s;if(video.current)video.current.srcObject=s;}).catch(()=>fallback('Camera unavailable. Returning to the map…'));return()=>{active=false;clearTimeout(timer);stream?.getTracks().forEach(t=>t.stop());};},[accuracy]);
+ const arrow=/left/i.test(direction||'')?'↰':/right/i.test(direction||'')?'↱':'↑';
+ return <div className="sm-ar" role="dialog" aria-modal="true" aria-label="Camera navigation"><video ref={video} autoPlay playsInline muted/><div><h2>Camera navigation</h2>{error?<p role="status">{error}</p>:<><div style={{fontSize:100,lineHeight:1}} aria-hidden="true">{arrow}</div><h2>{direction||'Follow the route shown on the map'}</h2><p>{remaining!==undefined?`${Math.round(remaining)} m remaining`:''}</p><p>Route instructions over your camera. Arrows are not anchored to the street; check signs and your surroundings.</p></>}<button onClick={onClose}>Continue with Map</button></div></div>;
+}
