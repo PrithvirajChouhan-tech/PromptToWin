@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family:
+      "Plus Jakarta Sans",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .font-serif-display {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+}
+
+/* Custom scrollbar for horizontal day ribbons and pill bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Preserve the original Street View imagery colors. */
+.sm-streetview,
+.sm-streetview-canvas,
+.sm-streetview-canvas .gm-style,
+.sm-streetview-canvas .gm-style img {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  color-scheme: light;
+}
+
+/* Live GPS Radar Pulse Animation */
+@keyframes gps-pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+}
+
+.gps-radar-pulse {
+  animation: gps-pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* A consistent, visible keyboard focus indicator across the non-map UI. */
+@layer base {
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid rgb(200 75 49 / 0.35);
+    outline-offset: 2px;
+  }
+}
+
+/* Reference-inspired quick actions: labelled tiles with generous touch targets. */
+.trip-action-panel {flex-wrap:wrap;}
+.trip-quick-actions {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;}
+.trip-quick-actions button {flex-direction:column;justify-content:center;gap:8px;min-height:76px;padding:12px 8px;white-space:normal;text-align:center;border-radius:18px;}
+.trip-quick-actions button svg {width:21px;height:21px;}
+@media (min-width:1100px){.trip-quick-actions{width:auto;min-width:340px;}}
+@media(prefers-reduced-motion:reduce){#trip-hero-section *,nav[aria-label="Bottom Navigation"] *{transition:none!important;animation:none!important;scroll-behavior:auto!important;}}
+
+/* Hide the bottom nav bar when a place photo is open fullscreen */
+body.img-fullscreen-open nav[aria-label="Bottom Navigation"],
+body.img-fullscreen-open [data-bottomnav] {
+  display: none !important;
+}
