@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C84B31" />
+      <stop offset="50%" stop-color="#E85B46" />
+      <stop offset="100%" stop-color="#FF7A59" />
+    </linearGradient>
+    
+    <!-- Warm Golden Sun Aura -->
+    <radialGradient id="sun-aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF3D6" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#F3D997" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#FF7A59" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Compass Pointer Gold Gradient -->
+    <linearGradient id="gold-needle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#FFE8B5" />
+      <stop offset="100%" stop-color="#E5A93C" />
+    </linearGradient>
+
+    <!-- Deep Shadow -->
+    <filter id="drop-shadow" x="-10%" y="-10%" width="120%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#191715" flood-opacity="0.25" />
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Smooth Rounded Container -->
+  <rect width="512" height="512" rx="128" fill="url(#bg-grad)" filter="url(#drop-shadow)" />
+
+  <!-- Inner Soft Inset Ring -->
+  <rect x="20" y="20" width="472" height="472" rx="112" stroke="white" stroke-opacity="0.15" stroke-width="4" fill="none" />
+
+  <!-- Subtle Sun Radial Aura -->
+  <circle cx="256" cy="256" r="190" fill="url(#sun-aura)" />
+
+  <!-- Outer Sacred Geometry Ring / Dial -->
+  <circle cx="256" cy="256" r="160" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="3" stroke-dasharray="8 8" fill="none" />
+  <circle cx="256" cy="256" r="136" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="2.5" fill="none" />
+
+  <!-- 8 Sacred Direction Dots -->
+  <circle cx="256" cy="96" r="5" fill="#FFE8B5" />
+  <circle cx="256" cy="416" r="5" fill="#FFE8B5" />
+  <circle cx="96" cy="256" r="5" fill="#FFE8B5" />
+  <circle cx="416" cy="256" r="5" fill="#FFE8B5" />
+  <circle cx="143" cy="143" r="3.5" fill="#FFFFFF" opacity="0.6" />
+  <circle cx="369" cy="143" r="3.5" fill="#FFFFFF" opacity="0.6" />
+  <circle cx="143" cy="369" r="3.5" fill="#FFFFFF" opacity="0.6" />
+  <circle cx="369" cy="369" r="3.5" fill="#FFFFFF" opacity="0.6" />
+
+  <!-- Dynamic Lotus Petal Foundation -->
+  <g opacity="0.95" filter="url(#glow)">
+    <!-- South & East & West secondary petals -->
+    <path d="M256 256 L240 376 C248 384 264 384 272 376 Z" fill="#FFE8B5" opacity="0.7" />
+    <path d="M256 256 L136 240 C128 248 128 264 136 272 Z" fill="#FFE8B5" opacity="0.7" />
+    <path d="M256 256 L376 240 C384 248 384 264 376 272 Z" fill="#FFE8B5" opacity="0.7" />
+    <path d="M256 256 L256 360" stroke="#FFE8B5" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- Yatra One Dynamic North Pointer (Sacred Spire & Compass Star) -->
+  <!-- Left Wing of North Arrow -->
+  <path d="M256 100 L216 256 L256 232 Z" fill="url(#gold-needle)" />
+  <!-- Right Wing of North Arrow (shaded) -->
+  <path d="M256 100 L256 232 L296 256 Z" fill="#E5A93C" />
+
+  <!-- South Pointer -->
+  <path d="M256 380 L236 264 L256 276 Z" fill="#FFFFFF" opacity="0.8" />
+  <path d="M256 380 L256 276 L276 264 Z" fill="#FFE8B5" opacity="0.6" />
+
+  <!-- East & West Pointer Accents -->
+  <path d="M130 256 L244 240 L236 256 L244 272 Z" fill="#FFE8B5" opacity="0.85" />
+  <path d="M382 256 L268 240 L276 256 L268 272 Z" fill="#FFE8B5" opacity="0.85" />
+
+  <!-- Center Focal Sun Bindu -->
+  <circle cx="256" cy="256" r="28" fill="#191715" />
+  <circle cx="256" cy="256" r="20" fill="url(#gold-needle)" />
+  <circle cx="256" cy="256" r="8" fill="#C84B31" />
+</svg>

@@ -1,0 +1,6 @@
+{
+  "name": "India Travel Planner & Itinerary",
+  "description": "Comprehensive India travel platform featuring 3 dedicated dashboards for Tourists, Businesses, and Tourism Authorities with real-time fair prices, footfall intelligence, and safety telemetry.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
